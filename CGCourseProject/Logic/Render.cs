@@ -12,13 +12,36 @@ namespace CGCourseProject.Logic
     public class Render
     {
         private readonly ITracer tracing;
+        public ICamera Camera { get; private set; }
+        public Scene Scene { get; private set; }
 
         public Render()
         {
             tracing = new Tracer();
+            GetDefaultCamera();
         }
 
-        public async Task MakeRendering(Scene scene, ICamera camera, Canvas canvas)
+        public Render(Scene scene) : this()
+        {
+            Scene = scene;
+        }
+
+        private void GetDefaultCamera()
+        {
+            float focus = 500;
+            float xAngle = -(float)Math.PI / 2;
+            float yAngle = 0;
+            float zAngle = (float)Math.PI;
+
+            Camera = new Camera(new Point3d(0, 500, 0), xAngle, yAngle, zAngle, focus);
+        }
+
+        public void InitCamera(Point3d position, float xAngel, float yAngel, float zAngel, float focus)
+        {
+            Camera = new Camera(position, xAngel, yAngel, zAngel, focus);
+        }
+
+        public async Task MakeRendering(Canvas canvas)
         {
             await Task.Run(() =>
             {
@@ -27,7 +50,7 @@ namespace CGCourseProject.Logic
 
                 float dx = w / 2f;
                 float dy = h / 2f;
-                float focus = camera.ProjPlaneDist;
+                float focus = Camera.ProjPlaneDist;
 
                 Parallel.For(0, w, i =>
                 {
@@ -36,7 +59,7 @@ namespace CGCourseProject.Logic
                         float x = i - dx;
                         float y = j - dy;
                         var ray = new Vector3d(x, y, focus);
-                        var color = tracing.Trace(scene, camera, ray);
+                        var color = tracing.Trace(Scene, Camera, ray);
                         canvas.SetPixel(i, j, color);
                     });
                 });
@@ -57,9 +80,9 @@ namespace CGCourseProject.Logic
                               var c = canvas.GetPixel(i, j);
                               float weight = 1f / 4f;
                               c = Color.MulColor(c, weight);
-                              c = Color.AddColors(c, Color.MulColor(tracing.Trace(scene, camera, new Vector3d(x + 0.5f, y, focus)), weight));
-                              c = Color.AddColors(c, Color.MulColor(tracing.Trace(scene, camera, new Vector3d(x, y + 0.5f, focus)), weight));
-                              c = Color.AddColors(c, Color.MulColor(tracing.Trace(scene, camera, new Vector3d(x + 0.5f, y + 0.5f, focus)), weight));
+                              c = Color.AddColors(c, Color.MulColor(tracing.Trace(Scene, Camera, new Vector3d(x + 0.5f, y, focus)), weight));
+                              c = Color.AddColors(c, Color.MulColor(tracing.Trace(Scene, Camera, new Vector3d(x, y + 0.5f, focus)), weight));
+                              c = Color.AddColors(c, Color.MulColor(tracing.Trace(Scene, Camera, new Vector3d(x + 0.5f, y + 0.5f, focus)), weight));
 
                               canvas.SetPixel(i, j, c);
                           }

@@ -14,17 +14,17 @@ namespace CGCourseProject.Logic
         public float Ka { get; set; }
 
         /// <summary>
-        /// Диффузный свет
+        /// Диффузное отражение
         /// </summary>
         public float Kd { get; set; }
 
         /// <summary>
-        /// Зеркальный свет
+        /// Зеркальное отражение
         /// </summary>
         public float Ks { get; set; }
 
         /// <summary>
-        /// Отражательная способность
+        /// Отраженный свет
         /// </summary>
         public float Kr { get; set; }
 
@@ -32,16 +32,16 @@ namespace CGCourseProject.Logic
         /// Пропущенный свет
         /// </summary>
         public float Kt { get; set; }
-        
-        public float P { get; set; }
+
+        public float P;
 
         /// <summary>
         /// 
         /// </summary>
         /// <param name="ka">Рассеянный свет</param>
-        /// <param name="kd">Диффузный свет</param>
-        /// <param name="ks">Зеркальный свет</param>
-        /// <param name="kr">Отражательная способность</param>
+        /// <param name="kd">Диффузное отражение</param>
+        /// <param name="ks">Зеркальное отражение</param>
+        /// <param name="kr">Отраженный свет</param>
         /// <param name="kt">Пропущенный свет</param>
         /// <param name="p"></param>
         public Material(float ka, float kd, float ks, float kr, float kt, float p)

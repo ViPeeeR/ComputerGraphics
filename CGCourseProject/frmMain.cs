@@ -1,4 +1,5 @@
 ﻿using CGCourseProject.Abstracts;
+using CGCourseProject.Constants;
 using CGCourseProject.Extentions;
 using CGCourseProject.Logic;
 using CGCourseProject.Scenes;
@@ -12,13 +13,8 @@ namespace CGCourseProject
 {
     public partial class frmMain : Form
     {
-        private const float ANGEL = 0.1f;
-        private const int DZ = 50;
-        private const int DX = 50;
         private IScene builder;
 
-        private Scene scene;
-        private ICamera camera;
         private Canvas canvas;
         private Render render;
         private Bitmap img;
@@ -36,15 +32,7 @@ namespace CGCourseProject
 
         private void InitSceneAndCamera()
         {
-            render = new Render();
-            scene = builder.CreateScene();
-
-            float focus = 1000;
-            float xAngle = (float)-Math.PI / 2f;
-            float yAngle = 0;
-            float zAngle = (float)Math.PI;
-
-            camera = new Camera(new Point3d(0, 500, 0), xAngle, yAngle, zAngle, focus);
+            render = new Render(builder.CreateScene());
 
             img = new Bitmap(TexWidth, TexHeight);
             canvas = new Canvas(TexWidth, TexHeight);
@@ -59,6 +47,7 @@ namespace CGCourseProject
 
             InitSceneAndCamera();
             CameraStateChange = true;
+
             await RenderScene();
         }
 
@@ -66,7 +55,7 @@ namespace CGCourseProject
         {
             if (CameraStateChange)
             {
-                await render.MakeRendering(scene, camera, canvas);
+                await render.MakeRendering(canvas);
 
                 for (int i = 0; i < TexWidth; i++)
                     for (int j = 0; j < TexHeight; j++)
@@ -91,9 +80,9 @@ namespace CGCourseProject
             if (!CameraStateChange)
             {
                 if (chkIsMove.Checked)
-                    camera.MoveCamera(new Vector3d(0, 0, DZ));
+                    render.Camera.MoveCamera(new Vector3d(0, 0, Consts.DZ));
                 else
-                    camera.RatateCamera(ANGEL, 0, 0);
+                    render.Camera.RatateCamera(Consts.ANGEL, 0, 0);
 
                 await PrepareAndRender();
             }
@@ -104,9 +93,9 @@ namespace CGCourseProject
             if (!CameraStateChange)
             {
                 if (chkIsMove.Checked)
-                    camera.MoveCamera(new Vector3d(0, 0, -DZ));
+                    render.Camera.MoveCamera(new Vector3d(0, 0, -Consts.DZ));
                 else
-                    camera.RatateCamera(-ANGEL, 0, 0);
+                    render.Camera.RatateCamera(-Consts.ANGEL, 0, 0);
 
                 await PrepareAndRender();
             }
@@ -117,9 +106,9 @@ namespace CGCourseProject
             if (!CameraStateChange)
             {
                 if (chkIsMove.Checked)
-                    camera.MoveCamera(new Vector3d(-DX, 0, 0));
+                    render.Camera.MoveCamera(new Vector3d(-Consts.DX, 0, 0));
                 else
-                    camera.RatateCamera(0, 0, ANGEL);
+                    render.Camera.RatateCamera(0, 0, Consts.ANGEL);
 
                 await PrepareAndRender();
             }
@@ -130,9 +119,9 @@ namespace CGCourseProject
             if (!CameraStateChange)
             {
                 if (chkIsMove.Checked)
-                    camera.MoveCamera(new Vector3d(DX, 0, 0));
+                    render.Camera.MoveCamera(new Vector3d(Consts.DX, 0, 0));
                 else
-                    camera.RatateCamera(0, 0, -ANGEL);
+                    render.Camera.RatateCamera(0, 0, -Consts.ANGEL);
 
                 await PrepareAndRender();
             }
