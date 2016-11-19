@@ -10,6 +10,6 @@ namespace CGCourseProject.Abstracts
 {
     public interface ITracer
     {
-        Color Trace(Scene scene, Camera camera, Vector3d ray);
+        Color Trace(Scene scene, ICamera camera, Vector3d ray);
     }
 }

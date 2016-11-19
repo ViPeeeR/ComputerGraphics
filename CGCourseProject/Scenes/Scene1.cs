@@ -23,8 +23,6 @@ namespace CGCourseProject.Scenes
             Scene scene = new Scene(new Color(255, 255, 255));
 
             scene.AddModel(CreateSphere());
-            //CreateAtenea(scene);
-
             scene.AddModel(CreateSurface());
 
             //scene.AddObject(new Triangle3d(

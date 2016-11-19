@@ -20,7 +20,7 @@ namespace CGCourseProject.Logic
             tracing = new Tracer();
         }
 
-        public async Task MakeRendering(Scene scene, Camera camera, Canvas canvas)
+        public async Task MakeRendering(Scene scene, ICamera camera, Canvas canvas)
         {
             await Task.Run(() =>
             {

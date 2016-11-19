@@ -23,7 +23,7 @@ namespace CGCourseProject
         private IScene builder;
 
         private Scene scene;
-        private Camera camera;
+        private ICamera camera;
         private Canvas canvas;
         private Render render;
         private Bitmap img;

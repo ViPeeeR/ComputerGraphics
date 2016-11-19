@@ -44,7 +44,6 @@ namespace CGCourseProject.KDTreeLogic
                 if (Objects.Count > 0)
                 {
                     Point3d intersectionPoint = new Point3d();
-                    float sqrCurrDist;
 
                     float sqrNearestDist = float.MaxValue;
                     IObject3d tmpNearestObj = null;
@@ -58,7 +57,7 @@ namespace CGCourseProject.KDTreeLogic
                         if(obj.Intersect(vectorStart, vector, ref intersectionPoint) &&
                             v.PointInVoxel(intersectionPoint))
                         {
-                            sqrCurrDist = Utils.SqrModuleVector(new Vector3d(vectorStart, intersectionPoint));
+                            var sqrCurrDist = Utils.SqrModuleVector(new Vector3d(vectorStart, intersectionPoint));
 
                             if (sqrCurrDist < sqrNearestDist || !intersected)
                             {

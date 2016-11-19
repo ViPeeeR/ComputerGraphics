@@ -8,10 +8,25 @@ namespace CGCourseProject.Logic
 {
     public class Material
     {
+        /// <summary>
+        /// Рассеянный свет
+        /// </summary>
         public float Ka { get; set; }
+        /// <summary>
+        /// Диффузный свет
+        /// </summary>
         public float Kd { get; set; }
+        /// <summary>
+        /// Зеркальный свет
+        /// </summary>
         public float Ks { get; set; }
+        /// <summary>
+        /// Отражательная способность
+        /// </summary>
         public float Kr { get; set; }
+        /// <summary>
+        /// Пропущенный свет
+        /// </summary>
         public float Kt { get; set; }
         
         public float P { get; set; }
@@ -20,7 +35,7 @@ namespace CGCourseProject.Logic
         /// 
         /// </summary>
         /// <param name="ka">Рассеянный свет</param>
-        /// <param name="kd">Дифузный свет</param>
+        /// <param name="kd">Диффузный свет</param>
         /// <param name="ks">Зеркальный свет</param>
         /// <param name="kr">Отражательная способность</param>
         /// <param name="kt">Пропущенный свет</param>

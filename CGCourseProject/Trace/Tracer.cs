@@ -11,7 +11,7 @@ namespace CGCourseProject.Trace
     {
         private const float EPSILON = (float)(1e-5);
 
-        public Color Trace(Scene scene, Camera camera, Vector3d vector)
+        public Color Trace(Scene scene, ICamera camera, Vector3d vector)
         {
             var rotateVec = Vector3d.RatateVectorX(vector, (float)Math.Sin(camera.X), (float)Math.Cos(camera.X));
             rotateVec = Vector3d.RatateVectorZ(rotateVec, (float)Math.Sin(camera.Z), (float)Math.Cos(camera.Z));
@@ -41,7 +41,6 @@ namespace CGCourseProject.Trace
             Point3d point, float dist, float intensity, int recursionLevel)
         {
             Material material = obj.GetMaterial;
-
             Vector3d norm = obj.GetNormalVector(point);
 
             Color objColor = obj.GetColor;
@@ -53,7 +52,6 @@ namespace CGCourseProject.Trace
             float fogDensity = 0;
             if (scene.FogDestiny != null)
                 fogDensity = scene.FogDestiny.Invoke(dist);
-
 
             Vector3d reflectedRay = new Vector3d();
             if ((material.Ks != 0f) || (material.Kr != 0f))
@@ -117,21 +115,17 @@ namespace CGCourseProject.Trace
         private Color GetSpecularColor(Point3d point, Vector3d reflectedRay, Scene scene, float p)
         {
             Color lightColor = new Color(0, 0, 0);
-            LightSource3d light = null;
-            Vector3d vLight = new Vector3d();
-            float cosLight;
-            Color colorLight = new Color();
 
             for (var i = 0; i < scene.LightSources.Count; i++)
             {
-                light = scene.LightSources[i];
+                var light = scene.LightSources[i];
                 if (IsViewable(light.Location, point, scene))
                 {
-                    vLight = new Vector3d(point, light.Location);
-                    cosLight = Utils.CosVectors(reflectedRay, vLight);
+                    var vLight = new Vector3d(point, light.Location);
+                    var cosLight = Utils.CosVectors(reflectedRay, vLight);
                     if (cosLight > EPSILON)
                     {
-                        colorLight = Color.MulColor(light.Color, Math.Pow(cosLight, p));
+                        var colorLight = Color.MulColor(light.Color, Math.Pow(cosLight, p));
                         lightColor = Color.AddColors(lightColor, colorLight);
                     }
                 }
@@ -143,19 +137,15 @@ namespace CGCourseProject.Trace
         private Color GetLightingColor(Point3d point, Vector3d norm, Scene scene)
         {
             Color lightColor = new Color(0, 0, 0);
-            LightSource3d light = null;
-            Vector3d vLight = new Vector3d();
-            float cosLight;
-            Color colorLight = new Color();
 
             for (var i = 0; i< scene.LightSources.Count; i++)
             {
-                light = scene.LightSources[i];
+                var light = scene.LightSources[i];
                 if (IsViewable(light.Location, point, scene))
                 {
-                    vLight = new Vector3d(point, light.Location);
-                    cosLight = Math.Abs(Utils.CosVectors(norm, vLight));
-                    colorLight = Color.MulColor(light.Color, cosLight);
+                    var vLight = new Vector3d(point, light.Location);
+                    var cosLight = Math.Abs(Utils.CosVectors(norm, vLight));
+                    var colorLight = Color.MulColor(light.Color, cosLight);
                     lightColor = Color.AddColors(lightColor, colorLight);
                 }
             }
