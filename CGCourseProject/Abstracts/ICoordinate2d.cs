@@ -6,10 +6,9 @@ using System.Threading.Tasks;
 
 namespace CGCourseProject.Abstracts
 {
-    public interface ICoordinateSet
+    public interface ICoordinate2d
     {
-        float X { set; }
-        float Y { set; }
-        float Z { set; }
+        float X { get; }
+        float Y { get; }
     }
 }

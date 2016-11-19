@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CGCourseProject.Abstracts;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,21 +7,17 @@ using System.Threading.Tasks;
 
 namespace CGCourseProject.Structs
 {
-    public struct Coord
+    public struct Coord : ICoordinate3d
     {
-        private float v1;
-        private float v2;
-        private float v3;
-
-        public Coord(float v1, float v2, float v3) : this()
+        public Coord(float x, float y, float z) : this()
         {
-            this.v1 = v1;
-            this.v2 = v2;
-            this.v3 = v3;
+            X = x;
+            Y = y;
+            Z = z;
         }
 
-        public float X { get; set; }
-        public float Y { get; set; }
-        public float Z { get; set; }
+        public float X { get; private set; }
+        public float Y { get; private set; }
+        public float Z { get; private set; }
     }
 }

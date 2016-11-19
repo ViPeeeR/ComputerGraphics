@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace CGCourseProject.Abstracts
 {
-    public interface ICamera : ICoordinateGet
+    public interface ICamera : ICoordinate3d
     {
         Point3d CameraPosition { get; }
         float ProjPlaneDist { get; }

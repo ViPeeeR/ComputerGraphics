@@ -19,12 +19,8 @@ namespace CGCourseProject.KDTreeLogic
         public KDNode LeftNode;
         public KDNode RightNode;
 
-        public KDNode(IReadOnlyCollection<IObject3d> objects, int count)
+        public KDNode(IReadOnlyCollection<IObject3d> objects, int count) : this()
         {
-            Plane = Plane.NONE;
-            LeftNode = null;
-            RightNode = null;
-
             Objects.AddRange(objects.Take(count));
         }
 

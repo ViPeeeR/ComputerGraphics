@@ -8,9 +8,9 @@ namespace CGCourseProject.Structs
 {
     public struct Color
     {
-        public byte R { get; set; }
-        public byte G { get; set; }
-        public byte B { get; set; }
+        public byte R;
+        public byte G;
+        public byte B;
 
         public Color(byte r, byte g, byte b)
         {

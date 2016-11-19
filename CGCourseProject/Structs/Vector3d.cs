@@ -8,11 +8,11 @@ using System.Threading.Tasks;
 
 namespace CGCourseProject.Structs
 {
-    public struct Vector3d : ICoordinateSet, ICoordinateGet
+    public struct Vector3d : ICoordinate3d
     {
-        public float X { get; set; }
-        public float Y { get; set; }
-        public float Z { get; set; }
+        public float X { get; private set; }
+        public float Y { get; private set; }
+        public float Z { get; private set; }
 
         public Vector3d(float x, float y, float z)
         {

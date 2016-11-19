@@ -44,7 +44,6 @@ namespace CGCourseProject.Logic
 
         private void RebuildKDTree()
         {
-
             var objects = new List<IObject3d>();
             foreach (var model in Models)
                 objects.AddRange(model.Objects);

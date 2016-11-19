@@ -12,18 +12,22 @@ namespace CGCourseProject.Logic
         /// Рассеянный свет
         /// </summary>
         public float Ka { get; set; }
+
         /// <summary>
         /// Диффузный свет
         /// </summary>
         public float Kd { get; set; }
+
         /// <summary>
         /// Зеркальный свет
         /// </summary>
         public float Ks { get; set; }
+
         /// <summary>
         /// Отражательная способность
         /// </summary>
         public float Kr { get; set; }
+
         /// <summary>
         /// Пропущенный свет
         /// </summary>

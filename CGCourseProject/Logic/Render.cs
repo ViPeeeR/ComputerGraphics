@@ -13,8 +13,6 @@ namespace CGCourseProject.Logic
     {
         private readonly ITracer tracing;
 
-
-
         public Render()
         {
             tracing = new Tracer();

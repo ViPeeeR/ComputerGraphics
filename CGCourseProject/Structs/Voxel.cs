@@ -53,19 +53,18 @@ namespace CGCourseProject.Structs
 
 
             XMin = xmin - 1;
-            XMax = xmax + 1;
             YMin = ymin - 1;
-            YMax = ymax + 1;
             ZMin = zmin - 1;
+
+            XMax = xmax + 1;
+            YMax = ymax + 1;
             ZMax = zmax + 1;
         }
 
         public int FilterOverlappedObjects(List<IObject3d> objects, int objCount)
         {
             var i = 0;
-            var j = objCount - 1;
-
-            while(i <= j)
+            for (var j = objCount - 1; i < j; i++, j--)
             {
                 while (i < j && ObjectInVoxel(objects[i]))
                     i++;
@@ -76,9 +75,6 @@ namespace CGCourseProject.Structs
                 var temp = objects[i];
                 objects[i] = objects[j];
                 objects[j] = temp;
-
-                i++;
-                j--;
             }
 
             return i;   
@@ -95,35 +91,31 @@ namespace CGCourseProject.Structs
             if (PointInVoxel(vectorStart))
                 return true;
 
-            Point3d p = new Point3d();
-            Coord c = new Coord();
+            var p = new Point3d();
+            var c = new Coord(XMin, YMin, ZMin);
 
-            c.Z = ZMin;
             if (VectorPlaneIntersection(vector, vectorStart, Plane.XY, c, ref p)
                     && (p.X > XMin) && (p.X < XMax) && (p.Y > YMin) && (p.Y < YMax))
                 return true;
 
-            c.Z = ZMax;
-            if (VectorPlaneIntersection(vector, vectorStart, Plane.XY, c, ref p)
-                    && (p.X > XMin) && (p.X < XMax) && (p.Y > YMin) && (p.Y < YMax))
-                return true;
-
-            c.Y = YMin;
             if (VectorPlaneIntersection(vector, vectorStart, Plane.XZ, c, ref p)
                     && (p.X > XMin) && (p.X < XMax) && (p.Z > ZMin) && (p.Z < ZMax))
                 return true;
 
-            c.Y = YMax;
-            if (VectorPlaneIntersection(vector, vectorStart, Plane.XZ, c, ref p)
-                    && (p.X > XMin) && (p.X < XMax) && (p.Z > ZMin) && (p.Z < ZMax))
-                return true;
-
-            c.X = XMin;
             if (VectorPlaneIntersection(vector, vectorStart, Plane.YZ, c, ref p)
                     && (p.Y > YMin) && (p.Y < YMax) && (p.Z > ZMin) && (p.Z < ZMax))
                 return true;
 
-            c.X = XMax;
+            c = new Coord(XMax, YMax, ZMax);
+
+            if (VectorPlaneIntersection(vector, vectorStart, Plane.XY, c, ref p)
+                    && (p.X > XMin) && (p.X < XMax) && (p.Y > YMin) && (p.Y < YMax))
+                return true;
+
+            if (VectorPlaneIntersection(vector, vectorStart, Plane.XZ, c, ref p)
+                    && (p.X > XMin) && (p.X < XMax) && (p.Z > ZMin) && (p.Z < ZMax))
+                return true;
+
             if (VectorPlaneIntersection(vector, vectorStart, Plane.YZ, c, ref p)
                     && (p.Y > YMin) && (p.Y < YMax) && (p.Z > ZMin) && (p.Z < ZMax))
                 return true;

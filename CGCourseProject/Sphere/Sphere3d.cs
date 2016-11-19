@@ -6,13 +6,12 @@ using System.Text;
 using System.Threading.Tasks;
 using CGCourseProject.Logic;
 using CGCourseProject.Structs;
+using CGCourseProject.Constants;
 
 namespace CGCourseProject.Sphere
 {
     public class Sphere3d : IObject3d
     {
-        private const float EPSILON = (float)(1e-5);
-
         protected Point3d center;
         protected float radius;
         protected Color color;
@@ -72,9 +71,9 @@ namespace CGCourseProject.Sphere
             float min_t = (t1 < t2) ? t1 : t2;
             float max_t = (t1 > t2) ? t1 : t2;
 
-            float t = (min_t > EPSILON) ? min_t : max_t;
+            float t = (min_t > Consts.EPSILON) ? min_t : max_t;
 
-            if (t < EPSILON)
+            if (t < Consts.EPSILON)
                 return false;
 
             intersectionPoint = new Point3d(vectorStart.X + t * vector.X, vectorStart.Y + t * vector.Y,

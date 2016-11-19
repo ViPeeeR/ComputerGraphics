@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 
 namespace CGCourseProject.Structs
 {
-    public struct Point3d : ICoordinateSet, ICoordinateGet
+    public struct Point3d : ICoordinate3d
     {
-        public float X { get; set; }
-        public float Y { get; set; }
-        public float Z { get; set; }
+        public float X { get; private set; }
+        public float Y { get; private set; }
+        public float Z { get; private set; }
 
         public Point3d(float x, float y, float z)
         {

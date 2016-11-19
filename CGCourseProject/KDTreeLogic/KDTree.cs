@@ -1,4 +1,5 @@
 ﻿using CGCourseProject.Abstracts;
+using CGCourseProject.Constants;
 using CGCourseProject.Structs;
 using System;
 using System.Collections.Generic;
@@ -10,9 +11,6 @@ namespace CGCourseProject.KDTreeLogic
 {
     public class KDTree
     {
-        private const int MAXSPLIT = 5;
-        private const int SPLITCOST = 5;
-
         public KDNode Root { get; }
         public Voxel BoundingBox { get; set; }
 
@@ -50,7 +48,7 @@ namespace CGCourseProject.KDTreeLogic
             p = Plane.NONE;
             c = new Coord();
 
-            if (depth >= 20 || count <= 1)
+            if (depth >= Consts.DEPTH || count <= 1)
                 return;
 
             float hx = v.XMax - v.XMin;
@@ -70,9 +68,9 @@ namespace CGCourseProject.KDTreeLogic
             float bestSAH = count;
             Coord currSplitCoord = new Coord();
 
-            for (var i = 1; i < MAXSPLIT; i++)
+            for (var i = 1; i < Consts.MAXSPLIT; i++)
             {
-                var l = (float)i / MAXSPLIT;
+                var l = (float)i / Consts.MAXSPLIT;
                 var r = 1 - l;
 
                 currSplitCoord = new Coord(v.XMin + l * hx, v.YMin + l * hy, v.ZMin + l * hz);
@@ -98,7 +96,7 @@ namespace CGCourseProject.KDTreeLogic
             var vr = lrVoxel.Item2;
 
             var currSAH = left * vl.ObjectsInVoxel(objects, count)
-                + right * vr.ObjectsInVoxel(objects, count) + SPLITCOST;
+                + right * vr.ObjectsInVoxel(objects, count) + Consts.SPLITCOST;
 
             if (currSAH < bestSAH)
             {

@@ -64,11 +64,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Abstracts\ICamera.cs" />
-    <Compile Include="Abstracts\ICoordinateGet.cs" />
-    <Compile Include="Abstracts\ICoordinateSet.cs" />
+    <Compile Include="Abstracts\ICoordinate3d.cs" />
+    <Compile Include="Abstracts\ICoordinate2d.cs" />
     <Compile Include="Abstracts\IObject3d.cs" />
     <Compile Include="Abstracts\IScene.cs" />
     <Compile Include="Abstracts\ITracer.cs" />
+    <Compile Include="Constants\Constants.cs" />
     <Compile Include="Extentions\Extention.cs" />
     <Compile Include="frmMain.cs">
       <SubType>Form</SubType>

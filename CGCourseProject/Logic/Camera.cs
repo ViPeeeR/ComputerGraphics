@@ -1,4 +1,5 @@
 ﻿using CGCourseProject.Abstracts;
+using CGCourseProject.Constants;
 using CGCourseProject.Structs;
 using System;
 using System.Collections.Generic;
@@ -10,7 +11,6 @@ namespace CGCourseProject.Logic
 {
     public class Camera : ICamera
     {
-        private const float EPSILON = (float)(1e-5);
 
         private float xsin;
         private float ysin;
@@ -73,13 +73,13 @@ namespace CGCourseProject.Logic
 
         public void RatateCamera(float x, float y, float z)
         {
-            if (Math.Abs(x) > EPSILON)
+            if (Math.Abs(x) > Consts.EPSILON)
                 X += x;
 
-            if (Math.Abs(y) > EPSILON)
+            if (Math.Abs(y) > Consts.EPSILON)
                 Y += y;
 
-            if (Math.Abs(z) > EPSILON)
+            if (Math.Abs(z) > Consts.EPSILON)
                 Z += z;            
         }
 
