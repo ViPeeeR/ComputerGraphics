@@ -53,78 +53,59 @@ namespace CGCourseProject
 
         private async Task RenderScene()
         {
-            if (CameraStateChange)
-            {
-                await render.MakeRendering(canvas);
+            await render.MakeRendering(canvas);
 
-                for (int i = 0; i < TexWidth; i++)
-                    for (int j = 0; j < TexHeight; j++)
-                        img.SetPixel(i, j, canvas.GetPixel(i, j).ToRGB());
-
-                CameraStateChange = false;
-            }
+            for (int i = 0; i < TexWidth; i++)
+                for (int j = 0; j < TexHeight; j++)
+                    img.SetPixel(i, j, canvas.GetPixel(i, j).ToRGB());
 
             pictureBox1.Image = img;
             pictureBox1.Refresh();
-            pictureBox1.Invalidate();
         }
 
         private async Task PrepareAndRender()
         {
-            CameraStateChange = true;
             await RenderScene();
         }
 
         private async void btnCamUp_Click(object sender, EventArgs e)
         {
-            if (!CameraStateChange)
-            {
-                if (chkIsMove.Checked)
-                    render.Camera.MoveCamera(new Vector3d(0, 0, Consts.DZ));
-                else
-                    render.Camera.RatateCamera(Consts.ANGEL, 0, 0);
+            if (chkIsMove.Checked)
+                render.Camera.MoveCamera(new Vector3d(0, 0, Consts.DZ));
+            else
+                render.Camera.RatateCamera(Consts.ANGEL, 0, 0);
 
-                await PrepareAndRender();
-            }
+            await PrepareAndRender();
         }
 
         private async void btnDown_Click(object sender, EventArgs e)
         {
-            if (!CameraStateChange)
-            {
-                if (chkIsMove.Checked)
-                    render.Camera.MoveCamera(new Vector3d(0, 0, -Consts.DZ));
-                else
-                    render.Camera.RatateCamera(-Consts.ANGEL, 0, 0);
+            if (chkIsMove.Checked)
+                render.Camera.MoveCamera(new Vector3d(0, 0, -Consts.DZ));
+            else
+                render.Camera.RatateCamera(-Consts.ANGEL, 0, 0);
 
-                await PrepareAndRender();
-            }
+            await PrepareAndRender();
         }
 
         private async void btnLeft_Click(object sender, EventArgs e)
         {
-            if (!CameraStateChange)
-            {
-                if (chkIsMove.Checked)
-                    render.Camera.MoveCamera(new Vector3d(-Consts.DX, 0, 0));
-                else
-                    render.Camera.RatateCamera(0, 0, Consts.ANGEL);
+            if (chkIsMove.Checked)
+                render.Camera.MoveCamera(new Vector3d(-Consts.DX, 0, 0));
+            else
+                render.Camera.RatateCamera(0, 0, Consts.ANGEL);
 
-                await PrepareAndRender();
-            }
+            await PrepareAndRender();
         }
 
         private async void btnRight_Click(object sender, EventArgs e)
         {
-            if (!CameraStateChange)
-            {
-                if (chkIsMove.Checked)
-                    render.Camera.MoveCamera(new Vector3d(Consts.DX, 0, 0));
-                else
-                    render.Camera.RatateCamera(0, 0, -Consts.ANGEL);
+            if (chkIsMove.Checked)
+                render.Camera.MoveCamera(new Vector3d(Consts.DX, 0, 0));
+            else
+                render.Camera.RatateCamera(0, 0, -Consts.ANGEL);
 
-                await PrepareAndRender();
-            }
+            await PrepareAndRender();
         }
     }
 }

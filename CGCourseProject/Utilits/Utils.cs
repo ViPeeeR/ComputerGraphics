@@ -36,14 +36,5 @@ namespace CGCourseProject.Utilits
             return DotProduct(v1, v2) / (float)Math.Sqrt(SqrModuleVector(v1) * SqrModuleVector(v2));
         }
 
-        public static Vector3d ReflectRay(Vector3d incidentRay, Vector3d normVec)
-        {
-            float k = 2 * DotProduct(incidentRay, normVec) / SqrModuleVector(normVec);
-            float x = incidentRay.X - normVec.X * k;
-            float y = incidentRay.Y - normVec.Y * k;
-            float z = incidentRay.Z - normVec.Z * k;
-
-            return new Vector3d(x, y, z);
-        }
     }
 }

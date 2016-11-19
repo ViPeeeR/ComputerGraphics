@@ -1,4 +1,5 @@
 ﻿using CGCourseProject.Abstracts;
+using CGCourseProject.Constants;
 using CGCourseProject.Logic;
 using CGCourseProject.Structs;
 using CGCourseProject.Utilits;
@@ -9,7 +10,7 @@ namespace CGCourseProject.Trace
 {
     public class Tracer : ITracer
     {
-        private const float EPSILON = (float)(1e-5);
+        private const int INITIALRAYINTENSITY = 100;
 
         public Color Trace(Scene scene, ICamera camera, Vector3d vector)
         {
@@ -17,7 +18,7 @@ namespace CGCourseProject.Trace
             rotateVec = Vector3d.RatateVectorZ(rotateVec, (float)Math.Sin(camera.Z), (float)Math.Cos(camera.Z));
             rotateVec = Vector3d.RatateVectorY(rotateVec, (float)Math.Sin(camera.Y), (float)Math.Cos(camera.Y));
 
-            return Recursively(scene, camera.CameraPosition, rotateVec, 100, 0);
+            return Recursively(scene, camera.CameraPosition, rotateVec, INITIALRAYINTENSITY, 0);
         }
 
         private Color Recursively(Scene scene, Point3d vectorStart, Vector3d vector,
@@ -35,6 +36,16 @@ namespace CGCourseProject.Trace
             }
 
             return scene.BackgroundColor;
+        }
+
+        public static Vector3d ReflectRay(Vector3d incidentRay, Vector3d normVec)
+        {
+            float k = 2 * Utils.DotProduct(incidentRay, normVec) / Utils.SqrModuleVector(normVec);
+            float x = incidentRay.X - normVec.X * k;
+            float y = incidentRay.Y - normVec.Y * k;
+            float z = incidentRay.Z - normVec.Z * k;
+
+            return new Vector3d(x, y, z);
         }
 
         private Color CalcColor(Scene scene, Point3d vectorStart, Vector3d vector, IObject3d obj,
@@ -55,11 +66,12 @@ namespace CGCourseProject.Trace
 
             Vector3d reflectedRay = new Vector3d();
             if ((material.Ks != 0f) || (material.Kr != 0f))
-                reflectedRay = Utils.ReflectRay(vector, norm);
+                reflectedRay = ReflectRay(vector, norm);
 
             // Ambient
             if (material.Ka != 0)
                 ambientColor = Color.MixColors(scene.BackgroundColor, objColor);
+
 
             // Diffuse
             if (material.Kd != 0)
@@ -83,7 +95,7 @@ namespace CGCourseProject.Trace
             // Reflect
             if (material.Kr != 0)
             {
-                if (intensity > 10 && recursionLevel < 10)
+                if (intensity > Consts.INTENSITY && recursionLevel < Consts.RESUCRIONLEVEL)
                     reflectedColor = Recursively(scene, point, reflectedRay, intensity * material.Kr * (1 - fogDensity),
                         recursionLevel + 1);
                 else
@@ -123,7 +135,7 @@ namespace CGCourseProject.Trace
                 {
                     var vLight = new Vector3d(point, light.Location);
                     var cosLight = Utils.CosVectors(reflectedRay, vLight);
-                    if (cosLight > EPSILON)
+                    if (cosLight > Consts.EPSILON)
                     {
                         var colorLight = Color.MulColor(light.Color, Math.Pow(cosLight, p));
                         lightColor = Color.AddColors(lightColor, colorLight);
