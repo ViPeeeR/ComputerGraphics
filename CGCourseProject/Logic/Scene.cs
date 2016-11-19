@@ -11,7 +11,7 @@ namespace CGCourseProject.Logic
 {
     public class Scene
     {
-        public readonly List<IObject3d> Objects = new List<IObject3d>();
+        public List<SceneObject> Models { get; } = new List<SceneObject>();
         public KDTree KDTree { get; set; }
 
         public readonly List<LightSource3d> LightSources = new List<LightSource3d>();
@@ -27,9 +27,9 @@ namespace CGCourseProject.Logic
             KDTree = null;
         }
 
-        public void AddObject(IObject3d obj)
+        public void AddModel(SceneObject model)
         {
-            Objects.Add(obj);
+            Models.Add(model);
         }
 
         public void AddLightSource(LightSource3d lightSource)
@@ -44,7 +44,12 @@ namespace CGCourseProject.Logic
 
         private void RebuildKDTree()
         {
-            this.KDTree = new KDTree(Objects);
+
+            var objects = new List<IObject3d>();
+            foreach (var model in Models)
+                objects.AddRange(model.Objects);
+
+            this.KDTree = new KDTree(objects);
         }
     }
 }

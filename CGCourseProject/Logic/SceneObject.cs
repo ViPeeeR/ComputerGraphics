@@ -11,6 +11,14 @@ namespace CGCourseProject.Logic
     {
         public List<IObject3d> Objects { get; } = new List<IObject3d>();
 
+        public void AddObject(IObject3d obj)
+        {
+            Objects.Add(obj);
+        }
 
+        public int Count
+        {
+            get { return Objects.Count; }
+        }
     }
 }

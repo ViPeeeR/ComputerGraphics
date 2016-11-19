@@ -160,6 +160,8 @@ namespace CGCourseProject.Logic
             Vector3d v2;
             Vector3d v3;
 
+            var model = new SceneObject();
+
             while (vertexes.Count > 0)
             {
                 p_p3 = vertexes.Dequeue();
@@ -193,7 +195,7 @@ namespace CGCourseProject.Logic
                     v3 = Vector3d.RatateVectorY(v3, sin_al_y, cos_al_y);
                     v3 = Vector3d.RatateVectorZ(v3, sin_al_z, cos_al_z);
 
-                    scene.AddObject(
+                    model.AddObject(
                         new Triangle3dn(
                             new Point3d(p1.X * scale + dx, p1.Y * scale + dy, p1.Z * scale + dz),
                             new Point3d(p2.X * scale + dx, p2.Y * scale + dy, p2.Z * scale + dz),
@@ -204,7 +206,7 @@ namespace CGCourseProject.Logic
                         );
                 }
                 else {
-                    scene.AddObject(
+                    model.AddObject(
                         new Triangle3d(
                             new Point3d(p1.X * scale + dx, p1.Y * scale + dy, p1.Z * scale + dz),
                             new Point3d(p2.X * scale + dx, p2.Y * scale + dy, p2.Z * scale + dz),
@@ -217,6 +219,9 @@ namespace CGCourseProject.Logic
                 p_p2 = p_p3;
                 p_v2 = p_v3;
             }
+
+            if (model.Count > 0)
+                scene.AddModel(model);
         }
     }
 }

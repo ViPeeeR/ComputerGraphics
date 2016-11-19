@@ -22,22 +22,10 @@ namespace CGCourseProject.Scenes
 
             Scene scene = new Scene(new Color(255, 255, 255));
 
-            scene.AddObject(CreateSphere());
+            scene.AddModel(CreateSphere());
             //CreateAtenea(scene);
 
-            scene.AddObject(new Triangle3d(
-                            new Point3d(-500, -500, -120),
-                            new Point3d(500, -500, -120),
-                            new Point3d(500, 500, -120),
-                            new Color(55, 200, 155),
-                            new Material(1, 6, 0, 0, 0, 0)));
-
-            scene.AddObject(new Triangle3d(
-                            new Point3d(-500, -500, -120),
-                            new Point3d(-500, 500, -120),
-                            new Point3d(500, 500, -120),
-                            new Color(55, 200, 155),
-                            new Material(1, 6, 0, 0, 0, 0)));
+            scene.AddModel(CreateSurface());
 
             //scene.AddObject(new Triangle3d(
             //                    new Point3d(-700, -700, -130),
@@ -76,10 +64,34 @@ namespace CGCourseProject.Scenes
             return scene;
         }
 
-        private IObject3d CreateSphere()
+        private SceneObject CreateSurface()
         {
-            return new Sphere3d(new Point3d(0, 0, 0), 100f, new Color(250, 30, 30),
-                new Material(1, 5, 5, 10, 0, 10));
+            var model = new SceneObject();
+
+            model.AddObject(new Triangle3d(
+                                new Point3d(-500, -500, -120),
+                                new Point3d(500, -500, -120),
+                                new Point3d(500, 500, -120),
+                                new Color(55, 200, 155),
+                                new Material(1, 6, 0, 0, 0, 0)));
+
+            model.AddObject(new Triangle3d(
+                                new Point3d(-500, -500, -120),
+                                new Point3d(-500, 500, -120),
+                                new Point3d(500, 500, -120),
+                                new Color(55, 200, 155),
+                                new Material(1, 6, 0, 0, 0, 0)));
+
+            return model;
+        }
+
+        private SceneObject CreateSphere()
+        {
+            var model = new SceneObject();
+            model.AddObject(new Sphere3d(new Point3d(0, 0, 0), 100f, new Color(250, 30, 30),
+                new Material(1, 5, 5, 10, 0, 10)));
+
+            return model;
         }
 
         private void CreateAtenea(Scene scene)
