@@ -31,7 +31,7 @@ namespace CGCourseProject.Scenes
             );
 
             loader.LoadObj("./123.obj", loader.SceneFaceHandler, loadParams);
-
+            //sdf
             return scene;
         }
 
