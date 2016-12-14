@@ -89,12 +89,19 @@
     <Compile Include="Logic\Scene.cs" />
     <Compile Include="Logic\SceneObject.cs" />
     <Compile Include="Scenes\Scene1.cs" />
-    <Compile Include="SettingsObject.cs">
+    <Compile Include="frmSettingsObject.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="SettingsObject.Designer.cs">
-      <DependentUpon>SettingsObject.cs</DependentUpon>
+    <Compile Include="frmSettingsObject.Designer.cs">
+      <DependentUpon>frmSettingsObject.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmSettingsSphere.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSettingsSphere.Designer.cs">
+      <DependentUpon>frmSettingsSphere.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Settings\SettingsSphere.cs" />
     <Compile Include="Sphere\Sphere3d.cs" />
     <Compile Include="Trace\Tracer.cs" />
     <Compile Include="Triangle\Triangle3d.cs" />
@@ -121,8 +128,11 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="SettingsObject.resx">
-      <DependentUpon>SettingsObject.cs</DependentUpon>
+    <EmbeddedResource Include="frmSettingsObject.resx">
+      <DependentUpon>frmSettingsObject.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSettingsSphere.resx">
+      <DependentUpon>frmSettingsSphere.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="ClassDiagram1.cd" />
     <None Include="Properties\Settings.settings">

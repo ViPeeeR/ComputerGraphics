@@ -6,41 +6,40 @@ using CGCourseProject.Structs;
 using CGCourseProject.Sphere;
 using CGCourseProject.Utilits;
 using CGCourseProject.Triangle;
+using CGCourseProject.Settings;
 
 namespace CGCourseProject.Scenes
 {
     public class Scene1 : IScene
     {
         private ObjLoader loader;
+        private Scene scene = new Scene(new Color(255, 255, 255));
 
         public Scene CreateScene()
         {
-            loader = new ObjLoader();
-
-            Scene scene = new Scene(new Color(255, 255, 255));
-
-            scene.AddModel(CreateSphere());
-            scene.AddModel(CreateSurface());
-
             SceneFaceHandlerParams loadParams = new SceneFaceHandlerParams(scene,
                 // scale:
-                5f,
+                45f,
                 // move dx, dy, dz:
-                50, -200, 0,
+                200, -500, 0,
                 // rotate around axises x, y, z:
-                0, 0, 0,
+                0, 0, -1f,
                 // color
-                new Color(255, 255, 255),
+                new Color(255, 0, 255),
                 // surface params
                 new Material(1, 1, 2, 0, 0, 10)
             );
 
-            //loader.LoadObj("./box.obj", loader.SceneFaceHandler, loadParams);
+            loader.LoadObj("./123.obj", loader.SceneFaceHandler, loadParams);
 
-            //loader.LoadObj("./box.obj",
-            //    // default handler which adding polygons of 3D model to scene:
-            //    loader.SceneFaceHandler,
-            //    loadParams);
+            return scene;
+        }
+
+        public Scene1()
+        {
+            loader = new ObjLoader();
+            scene.AddModel(CreateSurface());
+            scene.AddModel(CreateSphere());
 
             scene.FogDestiny = (dist) =>
             {
@@ -49,31 +48,31 @@ namespace CGCourseProject.Scenes
             };
 
             scene.AddLightSource(new LightSource3d(new Point3d(300, -300, 300), new Color(255, 255, 255)));
+        }
 
-            scene.AddLightSource(new LightSource3d(new Point3d(-300, -300, 300), new Color(255, 255, 255)));
-
+        public void PrepareScene()
+        {
             scene.PrepareScene();
-            return scene;
         }
 
         private SceneObject CreateSurface()
         {
             var model = new SceneObject();
-
+            Color color = new Color(55, 200, 155);
 
             // Bottom
             model.AddObject(new Triangle3d(
                                 new Point3d(-500, -500, -100),
                                 new Point3d(500, -500, -100),
                                 new Point3d(500, 500, -100),
-                                new Color(55, 200, 155),
+                                color,
                                 new Material(1, 6, 0, 0, 0, 0)));
 
             model.AddObject(new Triangle3d(
                                 new Point3d(-500, -500, -100),
                                 new Point3d(-500, 500, -100),
                                 new Point3d(500, 500, -100),
-                                new Color(55, 200, 155),
+                                color,
                                 new Material(1, 6, 0, 0, 0, 0)));
 
             // Top
@@ -81,14 +80,14 @@ namespace CGCourseProject.Scenes
                                 new Point3d(-500, -500, 400),
                                 new Point3d(500, -500, 400),
                                 new Point3d(500, 500, 400),
-                                new Color(55, 200, 155),
+                                color,
                                 new Material(1, 6, 0, 0, 0, 0)));
 
             model.AddObject(new Triangle3d(
                                 new Point3d(-500, -500, 400),
                                 new Point3d(-500, 500, 400),
                                 new Point3d(500, 500, 400),
-                                new Color(55, 200, 155),
+                                color,
                                 new Material(1, 6, 0, 0, 0, 0)));
 
             //Back
@@ -96,14 +95,14 @@ namespace CGCourseProject.Scenes
                                 new Point3d(-500, 500, -100),
                                 new Point3d(500, 500, -100),
                                 new Point3d(-500, 500, 400),
-                                new Color(55, 200, 155),
+                                color,
                                 new Material(1, 6, 0, 0, 0, 0)));
 
             model.AddObject(new Triangle3d(
                                 new Point3d(500, 500, -100),
                                 new Point3d(500, 500, 400),
                                 new Point3d(-500, 500, 400),
-                                new Color(55, 200, 155),
+                                color,
                                 new Material(1, 6, 0, 0, 0, 0)));
 
             //Left
@@ -111,14 +110,14 @@ namespace CGCourseProject.Scenes
                                 new Point3d(-500, 500, -100),
                                 new Point3d(-500, 500, 400),
                                 new Point3d(-500, -500, -100),
-                                new Color(55, 200, 155),
+                                color,
                                 new Material(1, 6, 0, 0, 0, 0)));
 
             model.AddObject(new Triangle3d(
                                 new Point3d(-500, 500, 400),
                                 new Point3d(-500, -500, 400),
                                 new Point3d(-500, -500, -100),
-                                new Color(55, 200, 155),
+                                color,
                                 new Material(1, 6, 0, 0, 0, 0)));
 
             //Right
@@ -126,14 +125,14 @@ namespace CGCourseProject.Scenes
                                 new Point3d(500, 500, -100),
                                 new Point3d(500, 500, 400),
                                 new Point3d(500, -500, -100),
-                                new Color(55, 200, 155),
+                                color,
                                 new Material(1, 6, 0, 0, 0, 0)));
 
             model.AddObject(new Triangle3d(
                                 new Point3d(500, 500, 400),
                                 new Point3d(500, -500, 400),
                                 new Point3d(500, -500, -100),
-                                new Color(55, 200, 155),
+                                color,
                                 new Material(1, 6, 0, 0, 0, 0)));
 
             // ЗА мной
@@ -141,16 +140,26 @@ namespace CGCourseProject.Scenes
                                 new Point3d(-500, -500, -100),
                                 new Point3d(-500, -500, 400),
                                 new Point3d(500, -500, -100),
-                                new Color(55, 200, 155),
+                                color,
                                 new Material(1, 6, 0, 0, 0, 0)));
 
             model.AddObject(new Triangle3d(
                                 new Point3d(500, -500, -100),
                                 new Point3d(500, -500, 400),
                                 new Point3d(-500, -500, 400),
-                                new Color(55, 200, 155),
+                                color,
                                 new Material(1, 6, 0, 0, 0, 0)));
             return model;
+        }
+
+        public void CreateSphere(SettingsSphere settings)
+        {
+            var model = new SceneObject();
+            Sphere3d sphere = new Sphere3d(settings.Center, settings.Radius, 
+                settings.Color, settings.Material);
+
+            model.AddObject(sphere);
+            scene.AddModel(model);
         }
 
         private SceneObject CreateSphere()
@@ -163,6 +172,11 @@ namespace CGCourseProject.Scenes
                 new Material(5, 10, 5, 10, 0, 10)));
 
             return model;
+        }
+
+        public void CreateModel(SceneFaceHandlerParams settings)
+        {
+            throw new NotImplementedException();
         }
     }
 }

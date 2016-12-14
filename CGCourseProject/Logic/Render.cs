@@ -88,14 +88,14 @@ namespace CGCourseProject.Logic
                               float y = j - dy;
 
                               var c = canvas.GetPixel(i, j);
-                              float weight = 1f / 7;
+                              float weight = 1f / 4;
                               c = Color.MulColor(c, weight);
                               c = Color.AddColors(c, Color.MulColor(tracing.Trace(Scene, Camera, new Vector3d(x + 0.5f, y, focus)), weight));
                               c = Color.AddColors(c, Color.MulColor(tracing.Trace(Scene, Camera, new Vector3d(x, y + 0.5f, focus)), weight));
                               c = Color.AddColors(c, Color.MulColor(tracing.Trace(Scene, Camera, new Vector3d(x + 0.5f, y + 0.5f, focus)), weight));
-                              c = Color.AddColors(c, Color.MulColor(tracing.Trace(Scene, Camera, new Vector3d(x - 0.5f, y, focus)), weight));
-                              c = Color.AddColors(c, Color.MulColor(tracing.Trace(Scene, Camera, new Vector3d(x, y - 0.5f, focus)), weight));
-                              c = Color.AddColors(c, Color.MulColor(tracing.Trace(Scene, Camera, new Vector3d(x - 0.5f, y - 0.5f, focus)), weight));
+                              //c = Color.AddColors(c, Color.MulColor(tracing.Trace(Scene, Camera, new Vector3d(x - 0.5f, y, focus)), weight));
+                              //c = Color.AddColors(c, Color.MulColor(tracing.Trace(Scene, Camera, new Vector3d(x, y - 0.5f, focus)), weight));
+                              //c = Color.AddColors(c, Color.MulColor(tracing.Trace(Scene, Camera, new Vector3d(x - 0.5f, y - 0.5f, focus)), weight));
 
                               canvas.SetPixel(i, j, c);
                           }

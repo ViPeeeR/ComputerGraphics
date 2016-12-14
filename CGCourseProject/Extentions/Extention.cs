@@ -12,5 +12,10 @@ namespace CGCourseProject.Extentions
         {
             return System.Drawing.Color.FromArgb(color.R, color.G, color.B);
         }
+
+        public static Structs.Color ToRGB(this System.Drawing.Color color)
+        {
+            return new Structs.Color(color.R, color.G, color.B);
+        }
     }
 }

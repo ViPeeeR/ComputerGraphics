@@ -33,7 +33,7 @@
             this.менюToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.btntoolExit = new System.Windows.Forms.ToolStripMenuItem();
             this.добавитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.шарToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolStripMenuItemSphere = new System.Windows.Forms.ToolStripMenuItem();
             this.chkIsMove = new System.Windows.Forms.CheckBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnRight = new System.Windows.Forms.Button();
@@ -75,7 +75,7 @@
             this.менюToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.btntoolExit});
             this.менюToolStripMenuItem.Name = "менюToolStripMenuItem";
-            this.менюToolStripMenuItem.Size = new System.Drawing.Size(105, 41);
+            this.менюToolStripMenuItem.Size = new System.Drawing.Size(105, 43);
             this.менюToolStripMenuItem.Text = "Меню";
             // 
             // btntoolExit
@@ -87,16 +87,17 @@
             // добавитьToolStripMenuItem
             // 
             this.добавитьToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.шарToolStripMenuItem});
+            this.ToolStripMenuItemSphere});
             this.добавитьToolStripMenuItem.Name = "добавитьToolStripMenuItem";
-            this.добавитьToolStripMenuItem.Size = new System.Drawing.Size(149, 41);
+            this.добавитьToolStripMenuItem.Size = new System.Drawing.Size(149, 43);
             this.добавитьToolStripMenuItem.Text = "Добавить";
             // 
-            // шарToolStripMenuItem
+            // ToolStripMenuItemSphere
             // 
-            this.шарToolStripMenuItem.Name = "шарToolStripMenuItem";
-            this.шарToolStripMenuItem.Size = new System.Drawing.Size(181, 42);
-            this.шарToolStripMenuItem.Text = "Шар";
+            this.ToolStripMenuItemSphere.Name = "ToolStripMenuItemSphere";
+            this.ToolStripMenuItemSphere.Size = new System.Drawing.Size(298, 42);
+            this.ToolStripMenuItemSphere.Text = "Шар";
+            this.ToolStripMenuItemSphere.Click += new System.EventHandler(this.ToolStripMenuItemSphere_Click);
             // 
             // chkIsMove
             // 
@@ -210,7 +211,7 @@
         private System.Windows.Forms.ToolStripMenuItem btntoolExit;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ToolStripMenuItem добавитьToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem шарToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItemSphere;
     }
 }
 

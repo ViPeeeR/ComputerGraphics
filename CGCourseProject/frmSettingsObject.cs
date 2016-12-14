@@ -10,11 +10,15 @@ using System.Windows.Forms;
 
 namespace CGCourseProject
 {
-    public partial class SettingsObject : Form
+    public partial class frmSettingsObject : Form
     {
-        public SettingsObject()
+        public frmSettingsObject()
         {
             InitializeComponent();
+        }
+
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
         }
     }
 }
