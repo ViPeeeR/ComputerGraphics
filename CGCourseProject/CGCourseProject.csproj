@@ -89,6 +89,12 @@
     <Compile Include="Logic\Scene.cs" />
     <Compile Include="Logic\SceneObject.cs" />
     <Compile Include="Scenes\Scene1.cs" />
+    <Compile Include="SettingsObject.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SettingsObject.Designer.cs">
+      <DependentUpon>SettingsObject.cs</DependentUpon>
+    </Compile>
     <Compile Include="Sphere\Sphere3d.cs" />
     <Compile Include="Trace\Tracer.cs" />
     <Compile Include="Triangle\Triangle3d.cs" />
@@ -115,6 +121,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="SettingsObject.resx">
+      <DependentUpon>SettingsObject.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="ClassDiagram1.cd" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

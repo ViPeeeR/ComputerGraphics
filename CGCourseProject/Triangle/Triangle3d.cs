@@ -1,4 +1,5 @@
 ﻿using CGCourseProject.Abstracts;
+using CGCourseProject.Constants;
 using CGCourseProject.Logic;
 using CGCourseProject.Structs;
 using CGCourseProject.Utilits;
@@ -12,8 +13,6 @@ namespace CGCourseProject.Triangle
 {
     public class Triangle3d : IObject3d
     {
-        private const float EPSILON = (float)(1e-5);
-
         protected Point3d p1;
         protected Point3d p2;
         protected Point3d p3;
@@ -69,7 +68,7 @@ namespace CGCourseProject.Triangle
             yMin = (yMin < p3.Y) ? yMin : p3.Y;
             zMin = (zMin < p3.Z) ? zMin : p3.Z;
 
-            return new Point3d(xMin - EPSILON, yMin - EPSILON, zMin - EPSILON);
+            return new Point3d(xMin - Consts.EPSILON, yMin - Consts.EPSILON, zMin - Consts.EPSILON);
         }
 
         public Point3d GetMaxBoundaryPoint()
@@ -86,20 +85,20 @@ namespace CGCourseProject.Triangle
             yMax = (yMax > p3.Y) ? yMax : p3.Y;
             zMax = (zMax > p3.Z) ? zMax : p3.Z;
 
-            return new Point3d(xMax + EPSILON, yMax + EPSILON, zMax + EPSILON);
+            return new Point3d(xMax + Consts.EPSILON, yMax + Consts.EPSILON, zMax + Consts.EPSILON);
         }
 
         public bool Intersect(Point3d vectorStart, Vector3d vector, ref Point3d intersectionPoint)
         {
             float scalarProduct = Utils.DotProduct(norm, vector);
 
-            if (Math.Abs(scalarProduct) < EPSILON)
+            if (Math.Abs(scalarProduct) < Consts.EPSILON)
                 return false;
 
             float k = -(norm.X * vectorStart.X + norm.Y * vectorStart.Y + norm.Z * vectorStart.Z + d)
                 / scalarProduct;
 
-            if (k < EPSILON)
+            if (k < Consts.EPSILON)
                 return false;
 
             // Intersection point
@@ -109,8 +108,8 @@ namespace CGCourseProject.Triangle
             Point3d ipt = new Point3d(x, y, z);
 
             if (checkSameClockDir(v_p1_p2, new Vector3d(p1, ipt), norm)
-                    && checkSameClockDir(v_p2_p3, new Vector3d(p2, ipt), norm)
-                    && checkSameClockDir(v_p3_p1, new Vector3d(p3, ipt), norm))
+                && checkSameClockDir(v_p2_p3, new Vector3d(p2, ipt), norm)
+                && checkSameClockDir(v_p3_p1, new Vector3d(p3, ipt), norm))
             {
                 intersectionPoint = ipt;
                 return true;
@@ -123,11 +122,7 @@ namespace CGCourseProject.Triangle
         private bool checkSameClockDir(Vector3d v1, Vector3d v2, Vector3d norm)
         {
             Vector3d norm_v1_v2 = Utils.CrossProduct(v2, v1);
-
-            if (Utils.DotProduct(norm_v1_v2, norm) < 0)
-                return false;
-            else
-                return true;
+            return Utils.DotProduct(norm_v1_v2, norm) >= 0;
         }
     }
 }

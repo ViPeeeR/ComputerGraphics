@@ -23,8 +23,6 @@ namespace CGCourseProject
         private int TexWidth;
         private int TexHeight;
 
-        private bool CameraStateChange;
-
         public frmMain()
         {
             InitializeComponent();
@@ -46,9 +44,8 @@ namespace CGCourseProject
             builder = new Scene1();
 
             InitSceneAndCamera();
-            CameraStateChange = true;
 
-            await RenderScene();
+            await PrepareAndRender();
         }
 
         private async Task RenderScene()
@@ -65,10 +62,12 @@ namespace CGCourseProject
 
         private async Task PrepareAndRender()
         {
+            label1.Visible = true;
             await RenderScene();
+            label1.Visible = false;
         }
 
-        private async void btnCamUp_Click(object sender, EventArgs e)
+        private async void btnForward_Click(object sender, EventArgs e)
         {
             if (chkIsMove.Checked)
                 render.Camera.MoveCamera(new Vector3d(0, 0, Consts.DZ));

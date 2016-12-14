@@ -10,15 +10,13 @@ namespace CGCourseProject.Trace
 {
     public class Tracer : ITracer
     {
-        private const int INITIALRAYINTENSITY = 100;
-
         public Color Trace(Scene scene, ICamera camera, Vector3d vector)
         {
             var rotateVec = Vector3d.RatateVectorX(vector, (float)Math.Sin(camera.X), (float)Math.Cos(camera.X));
             rotateVec = Vector3d.RatateVectorZ(rotateVec, (float)Math.Sin(camera.Z), (float)Math.Cos(camera.Z));
             rotateVec = Vector3d.RatateVectorY(rotateVec, (float)Math.Sin(camera.Y), (float)Math.Cos(camera.Y));
 
-            return Recursively(scene, camera.CameraPosition, rotateVec, INITIALRAYINTENSITY, 0);
+            return Recursively(scene, camera.CameraPosition, rotateVec, Consts.INITIALRAYINTENSITY, 0);
         }
 
         private Color Recursively(Scene scene, Point3d vectorStart, Vector3d vector,
@@ -60,18 +58,15 @@ namespace CGCourseProject.Trace
             Color reflectedColor = new Color();
             Color specularColor = new Color();
 
-            float fogDensity = 0;
-            if (scene.FogDestiny != null)
-                fogDensity = scene.FogDestiny.Invoke(dist);
+            float fogDensity = (scene.FogDestiny?.Invoke(dist)) ?? 0;
 
             Vector3d reflectedRay = new Vector3d();
-            if ((material.Ks != 0f) || (material.Kr != 0f))
+            if (material.Ks != 0f || material.Kr != 0f)
                 reflectedRay = ReflectRay(vector, norm);
 
             // Ambient
             if (material.Ka != 0)
                 ambientColor = Color.MixColors(scene.BackgroundColor, objColor);
-
 
             // Diffuse
             if (material.Kd != 0)
@@ -127,17 +122,21 @@ namespace CGCourseProject.Trace
         private Color GetSpecularColor(Point3d point, Vector3d reflectedRay, Scene scene, float p)
         {
             Color lightColor = new Color(0, 0, 0);
+            LightSource3d light;
+            Vector3d vLight;
+            float cosLight;
+            Color colorLight;
 
             for (var i = 0; i < scene.LightSources.Count; i++)
             {
-                var light = scene.LightSources[i];
+                light = scene.LightSources[i];
                 if (IsViewable(light.Location, point, scene))
                 {
-                    var vLight = new Vector3d(point, light.Location);
-                    var cosLight = Utils.CosVectors(reflectedRay, vLight);
+                    vLight = new Vector3d(point, light.Location);
+                    cosLight = Utils.CosVectors(reflectedRay, vLight);
                     if (cosLight > Consts.EPSILON)
                     {
-                        var colorLight = Color.MulColor(light.Color, Math.Pow(cosLight, p));
+                        colorLight = Color.MulColor(light.Color, Math.Pow(cosLight, p));
                         lightColor = Color.AddColors(lightColor, colorLight);
                     }
                 }

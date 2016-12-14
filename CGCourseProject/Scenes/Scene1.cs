@@ -1,9 +1,6 @@
-﻿using CGCourseProject.Abstracts;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System;
+
+using CGCourseProject.Abstracts;
 using CGCourseProject.Logic;
 using CGCourseProject.Structs;
 using CGCourseProject.Sphere;
@@ -27,16 +24,18 @@ namespace CGCourseProject.Scenes
 
             SceneFaceHandlerParams loadParams = new SceneFaceHandlerParams(scene,
                 // scale:
-                5,
+                5f,
                 // move dx, dy, dz:
-                0, 0, 0,
+                50, -200, 0,
                 // rotate around axises x, y, z:
                 0, 0, 0,
                 // color
-                new Color(200, 200, 50),
+                new Color(255, 255, 255),
                 // surface params
-                new Material(2, 3, 0, 0, 0, 0)
+                new Material(1, 1, 2, 0, 0, 10)
             );
+
+            //loader.LoadObj("./box.obj", loader.SceneFaceHandler, loadParams);
 
             //loader.LoadObj("./box.obj",
             //    // default handler which adding polygons of 3D model to scene:
@@ -50,6 +49,8 @@ namespace CGCourseProject.Scenes
             };
 
             scene.AddLightSource(new LightSource3d(new Point3d(300, -300, 300), new Color(255, 255, 255)));
+
+            scene.AddLightSource(new LightSource3d(new Point3d(-300, -300, 300), new Color(255, 255, 255)));
 
             scene.PrepareScene();
             return scene;
@@ -155,11 +156,11 @@ namespace CGCourseProject.Scenes
         private SceneObject CreateSphere()
         {
             var model = new SceneObject();
-            model.AddObject(new Sphere3d(new Point3d(-110, 0, 0), 100f, new Color(100, 0, 255),
+            model.AddObject(new Sphere3d(new Point3d(-220, 0, 0), 100f, new Color(100, 0, 255),
                 new Material(1, 10, 3, 10, 0, 10)));
 
-            model.AddObject(new Sphere3d(new Point3d(110, 0, 0), 100f, new Color(255, 97, 97),
-                new Material(5, 10, 5, 1.3f, 0, 10)));
+            model.AddObject(new Sphere3d(new Point3d(220, 0, 0), 100f, new Color(255, 97, 97),
+                new Material(5, 10, 5, 10, 0, 10)));
 
             return model;
         }

@@ -15,6 +15,7 @@ namespace CGCourseProject.Constants
         public const float EPSILON = 1e-4f;
         public const int INTENSITY = 10;
         public const int RESUCRIONLEVEL = 10;
+        public const int INITIALRAYINTENSITY = 100;
 
         public const float ANGEL = 0.1f;
         public const int DZ = 50;
