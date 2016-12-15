@@ -39,6 +39,7 @@ namespace CGCourseProject.Logic
 
         public void PrepareScene()
         {
+            KDTree = null;
             RebuildKDTree();
         }
 

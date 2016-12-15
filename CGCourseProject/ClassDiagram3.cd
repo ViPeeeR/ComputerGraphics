@@ -1,0 +1,308 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="CGCourseProject.Constants.Consts" Collapsed="true">
+    <Position X="9.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAEAAAAAAAQAAACAAAABAAABAAAAQAAAQAECAIAAA=</HashCode>
+      <FileName>Constants\Constants.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CGCourseProject.Extentions.Extention" Collapsed="true">
+    <Position X="13" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAA=</HashCode>
+      <FileName>Extentions\Extention.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CGCourseProject.frmMain" Collapsed="true">
+    <Position X="6" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAEGgESkGAEABCAAQCIChAOCDAAgACAACKAiBRAhEA=</HashCode>
+      <FileName>frmMain.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CGCourseProject.frmSettingsObject" Collapsed="true">
+    <Position X="7.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAgCRAABEAQAKgAAACABAgiAAAASAAAAAAAAI=</HashCode>
+      <FileName>frmSettingsObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CGCourseProject.frmSettingsSphere" Collapsed="true">
+    <Position X="9.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACRAAJEAQAKgAAACAAAwiAAAgSAACCAAAAI=</HashCode>
+      <FileName>frmSettingsSphere.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CGCourseProject.Program" Collapsed="true">
+    <Position X="11.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Program.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CGCourseProject.KDTreeLogic.KDNode" Collapsed="true">
+    <Position X="11.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAIAABAAAAAAAAIBAAAAAAAAAAEAQAIAAAAAAAA=</HashCode>
+      <FileName>KDTreeLogic\KDNode.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CGCourseProject.KDTreeLogic.KDTree" Collapsed="true">
+    <Position X="13" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAAAAACAAAAAAAAAAACAAAAQAAQAAAAEAAAA=</HashCode>
+      <FileName>KDTreeLogic\KDTree.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CGCourseProject.Logic.Camera" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="6" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAAAJAADAAAAAAAQAAgAAAAAAAAAgAAgBwIQAAYAE=</HashCode>
+      <FileName>Logic\Camera.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="CGCourseProject.Logic.Canvas" Collapsed="true">
+    <Position X="7.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIABABAABAAAAAAAAAIAAEAAAAAAAAAAAAAAgAAAAgA=</HashCode>
+      <FileName>Logic\Canvas.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CGCourseProject.Logic.Engine" Collapsed="true">
+    <Position X="11.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAgAAACAAYAAAAAAAAAABBAgAAAAAAAAICAACAA=</HashCode>
+      <FileName>Logic\Engine.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CGCourseProject.Logic.LightSource3d" Collapsed="true">
+    <Position X="6" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAEAAAAIAAAAAAAAAAAAAAAAAgAAAAAA=</HashCode>
+      <FileName>Logic\LightSource3d.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CGCourseProject.Logic.Material" Collapsed="true">
+    <Position X="7.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAIAAAAAAAEAAAAAAAAAAAAACAQAAAAAgAAAABAAAA=</HashCode>
+      <FileName>Logic\Material.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CGCourseProject.Logic.ObjLoader" Collapsed="true">
+    <Position X="9.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAQAAAAAAABAAAAAAQAAAQABAAAAAIAAAQAAAAA=</HashCode>
+      <FileName>Logic\ObjLoader.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CGCourseProject.Logic.Render" Collapsed="true">
+    <Position X="13" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAIACAEAgAgAAAAAAAAAAAAgAACAAAAAAAA=</HashCode>
+      <FileName>Logic\Render.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CGCourseProject.Logic.Scene" Collapsed="true">
+    <Position X="7.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAABAAAAAAAAECAAEAAAAJSAAAAAAAEAgAAAAAAAA=</HashCode>
+      <FileName>Logic\Scene.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CGCourseProject.Logic.SceneObject" Collapsed="true">
+    <Position X="13" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQABAAAAAEAAAAAAAAAAAA=</HashCode>
+      <FileName>Logic\SceneObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CGCourseProject.Properties.Resources" Collapsed="true">
+    <Position X="6" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAABEAAAAQAAAAAAAAAAAAAAAIA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CGCourseProject.Properties.Settings" Collapsed="true">
+    <Position X="6" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAIAAAAAABAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CGCourseProject.Scenes.Scene1" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="9.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAABAAQAAAAAABAAAAAIAAAgAAAAgAAABAAAAAAAA=</HashCode>
+      <FileName>Scenes\Scene1.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="CGCourseProject.Settings.SettingsSphere" Collapsed="true">
+    <Position X="7.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAIAAAAAAAEAAAAAAAAAAAAAAAQAgAAAgAAgAAIAAA=</HashCode>
+      <FileName>Settings\SettingsSphere.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CGCourseProject.Sphere.Sphere3d" BaseTypeListCollapsed="true">
+    <Position X="2.25" Y="6.5" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAgAAFAACAAAAAAAAAAEAAACAAAAABCAAAAAAABAAAA=</HashCode>
+      <FileName>Sphere\Sphere3d.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="CGCourseProject.Trace.Tracer" BaseTypeListCollapsed="true">
+    <Position X="11.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAiAAAAAAAAAEAAAAABIgAAAAAQAAAAA=</HashCode>
+      <FileName>Trace\Tracer.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="CGCourseProject.Triangle.Triangle3d">
+    <Position X="3.5" Y="0.5" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>CAAgAFAAAAAAAAAAAAAEAAACAAEAAJCEgAAAIABAQAE=</HashCode>
+      <FileName>Triangle\Triangle3d.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="CGCourseProject.Triangle.Triangle3dn">
+    <Position X="3.5" Y="2.75" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAACAAAAAAAAAAAAAAAAAACAAAEAAAAAAACAAAAAAI=</HashCode>
+      <FileName>Triangle\Triangle3dn.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CGCourseProject.Utilits.SceneFaceHandlerParams" Collapsed="true">
+    <Position X="11.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAAAAAAAAAAAAAgAIoAAAAAAAAAAAQAAAAAAAAZAE=</HashCode>
+      <FileName>Utilits\SceneFaceHandlerParams.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CGCourseProject.Utilits.Utils" Collapsed="true">
+    <Position X="13" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAQAAAAAAAAAAAAAAAAAAAAAAAAAAgIAAAAEAAAAA=</HashCode>
+      <FileName>Utilits\Utils.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Struct Name="CGCourseProject.Structs.Color" Collapsed="true">
+    <Position X="6" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQCAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAACAEAAUA=</HashCode>
+      <FileName>Structs\Color.cs</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="CGCourseProject.Structs.Coord" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="7.75" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAYAE=</HashCode>
+      <FileName>Structs\Coord.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Struct>
+  <Struct Name="CGCourseProject.Structs.Point2d" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="9.5" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAYAA=</HashCode>
+      <FileName>Structs\Point2d.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Struct>
+  <Struct Name="CGCourseProject.Structs.Point3d" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="11.25" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAYAE=</HashCode>
+      <FileName>Structs\Point3d.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Struct>
+  <Struct Name="CGCourseProject.Structs.Vector3d" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="13" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQAAAAAAAAwAEAAAAAAAAAAAAAAAAAAAAAAAAAYAE=</HashCode>
+      <FileName>Structs\Vector3d.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Struct>
+  <Struct Name="CGCourseProject.Structs.Voxel" Collapsed="true">
+    <Position X="6" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgAICAAEIAAAEAACAACAAwAAQAAAAAAEAAAAIAAAA=</HashCode>
+      <FileName>Structs\Voxel.cs</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Interface Name="CGCourseProject.Abstracts.ICamera" Collapsed="true">
+    <Position X="0.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAJAADAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAA=</HashCode>
+      <FileName>Abstracts\ICamera.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="CGCourseProject.Abstracts.ICoordinate2d" Collapsed="true">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAYAA=</HashCode>
+      <FileName>Abstracts\ICoordinate2d.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="CGCourseProject.Abstracts.ICoordinate3d" Collapsed="true">
+    <Position X="0.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAE=</HashCode>
+      <FileName>Abstracts\ICoordinate3d.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="CGCourseProject.Abstracts.IObject3d" Collapsed="true">
+    <Position X="6" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAFAAAAAAAAAAAAAEAAACAAAAABCAAAAAAAAAAAA=</HashCode>
+      <FileName>Abstracts\IObject3d.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="CGCourseProject.Abstracts.IScene" Collapsed="true">
+    <Position X="7.75" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAQAAAAAAAAAAAAAAAAgAAAAgAAAAAAAAAAAA=</HashCode>
+      <FileName>Abstracts\IScene.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="CGCourseProject.Abstracts.ITracer" Collapsed="true">
+    <Position X="9.5" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAA=</HashCode>
+      <FileName>Abstracts\ITracer.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Enum Name="CGCourseProject.KDTreeLogic.Plane" Collapsed="true">
+    <Position X="7.75" Y="9" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAQMAAAAAgAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>KDTreeLogic\Plane.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="CGCourseProject.Utilits.CameraState" Collapsed="true">
+    <Position X="6" Y="9" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAiAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Utilits\CameraState.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

@@ -20,5 +20,20 @@ namespace CGCourseProject.Settings
         public float Ks;
         public float Kr;
 
+        public static SettingsSphere DefaultSettings()
+        {
+            var settings = new SettingsSphere();
+            settings.Center = new Point3d(0, -100, 0);
+            settings.Radius = 100f;
+            settings.Color = new Color(0,0,0);
+            settings.Material = new Material(1, 10, 3, 10, 0, 10);
+            settings.Ka = 1;
+            settings.Kd = 10;
+            settings.Ks = 3;
+            settings.Kr = 10;
+
+            return settings;
+        }
+
     }
 }

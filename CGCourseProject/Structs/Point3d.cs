@@ -43,6 +43,5 @@ namespace CGCourseProject.Structs
 
             return new Point3d(x, y, p.Z);
         }
-
     }
 }

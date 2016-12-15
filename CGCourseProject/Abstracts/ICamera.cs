@@ -14,5 +14,7 @@ namespace CGCourseProject.Abstracts
 
         void MoveCamera(Vector3d vector);
         void RatateCamera(float x, float y, float z);
+
+        Coord GetPosition { get; }
     }
 }

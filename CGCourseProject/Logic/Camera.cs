@@ -11,7 +11,6 @@ namespace CGCourseProject.Logic
 {
     public class Camera : ICamera
     {
-
         private float xsin;
         private float ysin;
         private float zsin;
@@ -60,6 +59,14 @@ namespace CGCourseProject.Logic
         }
 
         public float ProjPlaneDist { get; }
+
+        public Coord GetPosition
+        {
+            get
+            {
+                return new Coord(X, Y, Z);
+            }
+        }
 
         public Camera(Point3d cameraPosition, float x, float y, float z, float projPlaneDist)
         {

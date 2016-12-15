@@ -82,6 +82,7 @@
     <Compile Include="KDTreeLogic\Plane.cs" />
     <Compile Include="Logic\Camera.cs" />
     <Compile Include="Logic\Canvas.cs" />
+    <Compile Include="Logic\Engine.cs" />
     <Compile Include="Logic\LightSource3d.cs" />
     <Compile Include="Logic\Material.cs" />
     <Compile Include="Logic\ObjLoader.cs" />
@@ -101,6 +102,7 @@
     <Compile Include="frmSettingsSphere.Designer.cs">
       <DependentUpon>frmSettingsSphere.cs</DependentUpon>
     </Compile>
+    <Compile Include="Settings\SettingsBox.cs" />
     <Compile Include="Settings\SettingsSphere.cs" />
     <Compile Include="Sphere\Sphere3d.cs" />
     <Compile Include="Trace\Tracer.cs" />
@@ -114,6 +116,7 @@
     <Compile Include="Structs\Vector3d.cs" />
     <Compile Include="Structs\Voxel.cs" />
     <Compile Include="Triangle\Triangle3dn.cs" />
+    <Compile Include="Utilits\CameraState.cs" />
     <Compile Include="Utilits\SceneFaceHandlerParams.cs" />
     <Compile Include="Utilits\Utils.cs" />
     <EmbeddedResource Include="frmMain.resx">
@@ -135,6 +138,7 @@
       <DependentUpon>frmSettingsSphere.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="ClassDiagram1.cd" />
+    <None Include="ClassDiagram3.cd" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

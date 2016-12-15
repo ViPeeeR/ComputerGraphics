@@ -11,9 +11,11 @@ namespace CGCourseProject.Abstracts
 {
     public interface IScene
     {
+        Scene Scene { get; }
         Scene CreateScene();
-        void CreateSphere(SettingsSphere settings);
-
-        void CreateModel(SceneFaceHandlerParams settings);
+        SceneObject CreateSurface();
+        void CreateModel(SettingsSphere settings);
+        void CreateModel(SceneFaceHandlerParams settings, string filename);
+        void SetDefaultScene();
     }
 }

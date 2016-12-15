@@ -18,15 +18,14 @@ namespace CGCourseProject.Logic
         public Render()
         {
             tracing = new Tracer();
-            GetDefaultCamera();
         }
 
-        public Render(Scene scene) : this()
+        public void SetScene(Scene scene)
         {
             Scene = scene;
         }
 
-        private void GetDefaultCamera()
+        public void SetDefaultCamera()
         {
             float focus = 400;
             float xAngle = -(float)Math.PI / 2;
@@ -36,14 +35,14 @@ namespace CGCourseProject.Logic
             Camera = new Camera(new Point3d(0, -500, 0), xAngle, yAngle, zAngle, focus);
         }
 
-        private void GetTopCamera()
+        public void SetTopCamera()
         {
             float focus = 400;
             float xAngle = (float)Math.PI;
             float yAngle = 0;
             float zAngle = 0;
 
-            Camera = new Camera(new Point3d(0, 0, 400), xAngle, yAngle, zAngle, focus);
+            Camera = new Camera(new Point3d(0, 0, 500), xAngle, yAngle, zAngle, focus);
         }
 
         public void InitCamera(Point3d position, float xAngel, float yAngel, float zAngel, float focus)
@@ -51,56 +50,56 @@ namespace CGCourseProject.Logic
             Camera = new Camera(position, xAngel, yAngel, zAngel, focus);
         }
 
-        public async Task MakeRendering(Canvas canvas)
+        public void MakeRendering(Canvas canvas, Action<int> progress)
         {
-            await Task.Run(() =>
+            int w = canvas.Width;
+            int h = canvas.Height;
+
+            float dx = w / 2f;
+            float dy = h / 2f;
+            float focus = Camera.ProjPlaneDist;
+
+            int count = 0;
+
+            var result = Parallel.For(0, w, i =>
             {
-                int w = canvas.Width;
-                int h = canvas.Height;
-
-                float dx = w / 2f;
-                float dy = h / 2f;
-                float focus = Camera.ProjPlaneDist;
-
-                var result = Parallel.For(0, w, i =>
+                progress.Invoke(count++);
+                Parallel.For(0, h, j =>
                 {
-                    Parallel.For(0, h, j =>
-                    {
-                        float x = i - dx;
-                        float y = j - dy;
-                        var ray = new Vector3d(x, y, focus);
-                        var color = tracing.Trace(Scene, Camera, ray);
-                        canvas.SetPixel(i, j, color);
-                    });
+                    float x = i - dx;
+                    float y = j - dy;
+                    var ray = new Vector3d(x, y, focus);
+                    var color = tracing.Trace(Scene, Camera, ray);
+                    canvas.SetPixel(i, j, color);
                 });
+            });
 
-                var grayCanvas = canvas.DetectEdgesCanvas();
+            var grayCanvas = canvas.DetectEdgesCanvas();
 
 
-                Parallel.For(1, w, i =>
-                {
-                    Parallel.For(1, h, j =>
+            Parallel.For(1, w, i =>
+            {
+                Parallel.For(1, h, j =>
+                  {
+                      var gray = grayCanvas.GetPixel(i, j).B;
+                      if (gray > 10)
                       {
-                          var gray = grayCanvas.GetPixel(i, j).B;
-                          if (gray > 10)
-                          {
-                              float x = i - dx;
-                              float y = j - dy;
+                          float x = i - dx;
+                          float y = j - dy;
 
-                              var c = canvas.GetPixel(i, j);
-                              float weight = 1f / 4;
-                              c = Color.MulColor(c, weight);
-                              c = Color.AddColors(c, Color.MulColor(tracing.Trace(Scene, Camera, new Vector3d(x + 0.5f, y, focus)), weight));
-                              c = Color.AddColors(c, Color.MulColor(tracing.Trace(Scene, Camera, new Vector3d(x, y + 0.5f, focus)), weight));
-                              c = Color.AddColors(c, Color.MulColor(tracing.Trace(Scene, Camera, new Vector3d(x + 0.5f, y + 0.5f, focus)), weight));
-                              //c = Color.AddColors(c, Color.MulColor(tracing.Trace(Scene, Camera, new Vector3d(x - 0.5f, y, focus)), weight));
-                              //c = Color.AddColors(c, Color.MulColor(tracing.Trace(Scene, Camera, new Vector3d(x, y - 0.5f, focus)), weight));
-                              //c = Color.AddColors(c, Color.MulColor(tracing.Trace(Scene, Camera, new Vector3d(x - 0.5f, y - 0.5f, focus)), weight));
+                          var c = canvas.GetPixel(i, j);
+                          float weight = 1f / 4;
+                          c = Color.MulColor(c, weight);
+                          c = Color.AddColors(c, Color.MulColor(tracing.Trace(Scene, Camera, new Vector3d(x + 0.5f, y, focus)), weight));
+                          c = Color.AddColors(c, Color.MulColor(tracing.Trace(Scene, Camera, new Vector3d(x, y + 0.5f, focus)), weight));
+                          c = Color.AddColors(c, Color.MulColor(tracing.Trace(Scene, Camera, new Vector3d(x + 0.5f, y + 0.5f, focus)), weight));
+                          //c = Color.AddColors(c, Color.MulColor(tracing.Trace(Scene, Camera, new Vector3d(x - 0.5f, y, focus)), weight));
+                          //c = Color.AddColors(c, Color.MulColor(tracing.Trace(Scene, Camera, new Vector3d(x, y - 0.5f, focus)), weight));
+                          //c = Color.AddColors(c, Color.MulColor(tracing.Trace(Scene, Camera, new Vector3d(x - 0.5f, y - 0.5f, focus)), weight));
 
-                              canvas.SetPixel(i, j, c);
-                          }
-                      });
-                });
+                          canvas.SetPixel(i, j, c);
+                      }
+                  });
             });
         }
     }
